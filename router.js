@@ -1,0 +1,19 @@
+Students = new Mongo.Collection('students');
+Results = new Mongo.Collection('results');
+
+Router.route('/', {
+  template: 'students'
+});
+
+Router.route("/results", {
+  template: 'results'
+});
+
+Router.route("/students",{
+  template: 'students'
+//  this.layout("ApplicationLayout");
+//  this.render("PostHeader", {to: "header"});
+//  this.render("PostAside", {to: "aside"});
+//  this.render("Post");
+//  this.render("PostFooter", {to: "footer"});
+});

@@ -1,0 +1,129 @@
+<head>
+    <title>Analysis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<template name="students">
+  <div class="row">
+    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    <div class="col-lg-10 col-md-10 col-sm-10">
+      <form>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Add Student</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="form-group">
+                  <label for="exam_number">Exam Number</label>
+                  <input type="text" class="form-control" id="exam_number"
+                    name="exam_number" placeholder="e.g. 00342" required>
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="form-group">
+                  <label for="firstname">Firstname</label>
+                  <input type="text" class="form-control" id="firstname"
+                    name="firstname" placeholder="Enter firstname" required>
+                </div>
+              </div>
+               <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="form-group">
+                  <label for="lastname">Lastname</label>
+                  <input type="text" class="form-control" id="lastname"
+                  name="lastname" placeholder="Enter lastname" required>
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="form-group">
+                  <label for="yearGroup">Year Group</label>
+                  <select id="yearGroup" name="yearGroup" class="form-control">
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="form-group">
+                  <label for="disadvantaged">Disadvantaged</label>
+                  <button type="button" class="btn btn-primary" id="disadvantaged"
+                    data-toggle="button" data-value=false aria-pressed="false" autocomplete="off">
+                    False
+                  </button>
+                </div>
+              </div>
+              <div class="col-lg-1 col-md-1 col-sm-1">
+                <div class="form-group">
+                  <label for="sen">SEN</label>
+                  <button type="button" class="btn btn-primary" id="sen"
+                    data-toggle="button" data-value=false aria-pressed="false" autocomplete="off">
+                    False
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-lg-10 col-md-10 col-sm-10"></div>
+              <div class="col-lg-1 col-md-1 col-sm-1">
+                <input type="submit" name="Save" value="Save" id="saveBtn" class="form-control"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div><!-- /col-lg-10 offset1 -->
+  </div><!-- /row-fluid -->
+  <div class="row">
+    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    <div class="col-lg-10 col-md-10 col-sm-10">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Students</h3>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Exam Number</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Year Group</th>
+              <th>Disadvantaged</th>
+              <th>SEN</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each students}}
+              {{> student}}
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name="student">
+  <tr>
+    <td>{{_id}}</td>
+    <td>{{firstname}}</td>
+    <td>{{lastname}}</td>
+    <td>{{yearGroup}}</td>
+    <td>
+      {{#if disadvantaged}}Yes{{/if}}
+      {{#unless disadvantaged}}No{{/unless}}
+    </td>
+    <td>
+      {{#if sen}}Yes{{/if}}
+      {{#unless sen}}No{{/unless}}
+    </td>
+  </tr>
+</template>
