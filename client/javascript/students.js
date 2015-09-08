@@ -35,7 +35,20 @@ Template.students.events({
       disadvantaged: $("#disadvantaged").attr('data-value') == 'true',
       sen: $("#sen").attr('data-value') == 'true',
     };
-    Meteor.call('addStudent', student);
+    Meteor.call('addStudent', student, function(err, result){
+      if (err){
+        console.log(err);
+      } else {
+        if (result){
+          if (result.insertedId){
+            console.log(result.numberAffected + " new pupil added");
+          } else {
+            console.log(result.numberAffected + " pupil updated");
+          }
+        }
+        console.log(result);
+      }
+    });
   }
 
 

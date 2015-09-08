@@ -1,3 +1,4 @@
+
 Template.results.onCreated(function(){
   this.subscribe("results");
 });

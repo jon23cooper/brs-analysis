@@ -11,8 +11,10 @@ if (Meteor.isServer){
 };
 
 Meteor.methods({
+
   addStudent:function(student){
-     Students.upsert({_id: student.id},
+    var existingRecords = Students.find().count();
+     var result = Students.upsert({_id: student.id},
        {
          $set:{
          firstname: student.firstname,
@@ -22,6 +24,8 @@ Meteor.methods({
          sen: student.sen,
         }
     });
+    return result;
+  //  return existingRecords - Students.find().count();
   },
 
   addResult: function(result){
