@@ -13,7 +13,6 @@ if (Meteor.isServer){
 Meteor.methods({
 
   addStudent:function(student){
-    var existingRecords = Students.find().count();
      var result = Students.upsert({_id: student.id},
        {
          $set:{
@@ -29,12 +28,10 @@ Meteor.methods({
   },
 
   addResult: function(result){
-    Results.insert({
+    var result = Results.insert({
       grade: result.grade,
-    }, function(error, result){
-      console.log(result);
-      return result;
-    }
-  );
+    });
+    return result;
   },
+  
 });

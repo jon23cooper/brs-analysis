@@ -1,5 +1,32 @@
 <template name="results">
-  <form name="addResult">
-    <input type="submit" />
-  </form>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Add Result</h3>
+    </div>
+    <div class="panel-body">
+      <form name="addResult" class="form-inline">
+        <div class="form-group">
+          <label for="assessmentName">Assessment</label>
+          <input type="text" class="form-control" id="" placeholder="">
+          <p class="help-block">Should be an option</p>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" class="form-control" id="" placeholder="">
+          <p class="help-block">Should be a select</p>
+        </div>
+        <div class="form-group">
+          <label for="examType">Exam Type</label>
+          <input type="text" class="form-control" id="" placeholder="">
+          <p class="help-block">Should be a select</p>
+        </div>
+        <div class="form-group">
+          <label for="examGrade">Exam Grade</label>
+          <input type="text" class="form-control" id="" placeholder="">
+          <p class="help-block">Should be a select based on examType</p>
+        </div>
+        <input type="submit" />
+      </form>
+    </div>
+  </div>
 </template>

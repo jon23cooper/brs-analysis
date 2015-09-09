@@ -9,6 +9,10 @@ Router.route("/results", {
   template: 'results'
 });
 
+Router.route("/qualifications", {
+  template: 'qualifications'
+})
+
 Router.route("/students",{
   template: 'students'
 //  this.layout("ApplicationLayout");
