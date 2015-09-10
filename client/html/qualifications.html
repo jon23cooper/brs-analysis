@@ -1,50 +1,104 @@
 <template name="qualifications">
-  <form class="form-inline">
+  <form class="form-inline" id="qualName">
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" placeholder="Enter name for exam type e.g GCSE">
+      <input type="text" class="form-control" id="name" name=name placeholder="Enter name for exam type e.g GCSE" required>
     </div>
-    <input type="submit" name="Add" class="form-control" />
+    <input type="submit" name="addQual" class="form-control" />
   </form>
-  <<table class="table">
-    <thead>
-      <tr>
-        <td>Name</td>
-        <td>Details</td>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each qualifications}}
-        {{> qualification}}
-      {{/each}}
-    </tbody>
-  </table>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class= panel-title>{{currentQualification}}</h3>
+    </div>
+    <div class="panel-body">
+      <form name="addGrades" id="qualGrade" class="form-inline">
+        <div class="form-group">
+          <label for="grade">Grade</label>
+          <input type="text" name="grade" required />
+        </div>
+        <div class="form-group">
+          <label for="points">Points</label>
+          <input type="number" min=0 name="points" required />
+        </div>
+        <div class="form-group">
+          <label for="order">Order</label>
+          <input type="number" min=1 name="order" required />
+        </div>
+        <input type="submit" name="addGrade" value="Add" class="form-control" />
+
+      </form>
+    </div>
+  </div>
+
+  Current Qualification: {{currentQualification}}
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Details</td>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each qualifications}}
+          {{> qualification}}
+        {{/each}}
+      </tbody>
+    </table>
+    </div>
 </template>
 
-<<template name="qualification">
+<template name="qualification">
   <tr>
-    <td>{{name}}</td>
+    <td>
+      {{_id}}
+      <button class="btn btn-default" id="addGrade" data-qual = "{{_id}}">Add Grade</button>
+    {{> popupGradeEntry}}
+    </td>
     <td>
       <table class="table table-striped">
         <thead>
           <tr>
             <th>Grade</th>
-            <th>Points</th>
-            <th>Order</th>
+            {{#each sortedGrades}}
+              {{> grade}}
+            {{/each}}
           </tr>
         </thead>
         <tbody>
-          {{#each grade}}
-            {{> gradeDetails}}
-          {{/each}}
+          <tr>
+            <td>Points</td>
+            {{#each sortedGrades}}
+              {{> point}}
+            {{/each}}
+          </tr>
+          <tr>
+            <td>Order</td>
+            {{#each sortedGrades}}
+              {{> order}}
+            {{/each}}
+          </tr>
         </tbody>
       </table>
     </td>
   </tr>
+
+</template>
+
+<template name="grade">
+  <th>{{grade}}</th>
+</template>
+
+<template name="point">
+  <td>{{points}}</td>
+</template>
+
+<template name="order">
+  <td>{{order}}</td>
 </template>
 
 <template name="qualDetails">
-  <<h3> <small>{{name}}</small></h3>
+  <h3> <small>{{_id}}</small></h3>
   <form class ="form-inline">
     <div class="form-group">
       <label for="grade">Grade</label>
@@ -76,10 +130,44 @@
   </form>
 </template>
 
-<<template name="gradeDetails">
+<template name="gradeDetails">
   <tr>
     <td>{{grade}}</td>
     <td>{{points}}</td>
     <td>{{order}}</td>
   </tr>
+</template>
+
+<template name="popupGradeEntry">
+  <div class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Add grade to {{_id}}</h4>
+      </div>
+      <div class="modal-body">
+        <form id="qualGrade">
+          <div class="form-group">
+            <label for="grade">Grade</label>
+            <input type="text" name="grade" required />
+          </div>
+          <div class="form-group">
+            <label for="points">Points</label>
+            <input type="number" name="points" value="0" min=0 required />
+          </div>
+          <div class="form-group">
+            <label for="order">Order</label>
+            <input type="number" min="1" value=1 name="order"/>
+          </div>
+          <input type="submit" id="addGrade" />
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 </template>

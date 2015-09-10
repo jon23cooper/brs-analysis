@@ -11,7 +11,7 @@ if (Meteor.isServer){
   Meteor.publish("qualifications", function(){
     return Qualifications.find({});
   });
-
+  
 };
 
 Meteor.methods({
@@ -38,11 +38,21 @@ Meteor.methods({
     return result;
   },
 
-  addQualification: function(qual){
+  addQualification: function(qualificationName){
     var result = Qualifications.insert({
-      name: qual.name,
+      _id: qualificationName,
+      grades: []
     });
-    return name;
+    return result;
+  },
+
+  addGradeToQualification: function(qualificationName, grade){
+    console.log("inserting into Qualification: " + qualificationName);
+    console.log("inserting: " + grade);
+    var result = Qualifications.update(
+      {_id: qualificationName},
+    {$push: {grades: grade}});
+    return result;
   }
 
 });
