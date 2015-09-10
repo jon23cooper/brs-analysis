@@ -1,4 +1,5 @@
 <template name="qualifications">
+  {{> popupGradeEntry}}
   <form class="form-inline" id="qualName">
     <div class="form-group">
       <label for="name">Name</label>
@@ -53,7 +54,7 @@
     <td>
       {{_id}}
       <button class="btn btn-default" id="addGrade" data-qual = "{{_id}}">Add Grade</button>
-    {{> popupGradeEntry}}
+
     </td>
     <td>
       <table class="table table-striped">

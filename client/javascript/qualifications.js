@@ -51,7 +51,7 @@ Template.qualifications.events({
   },
 
   "click button#addGrade": function(event){
-    console.log(event);
+    var qualId = event.target.dataset.qual;
     var qualificationToEdit = this;
     currentQual.set(this._id);
     $(".modal").modal('show');
@@ -71,4 +71,15 @@ Template.qualification.helpers({
 
 
   },
-})
+});
+
+Template.popupGradeEntry.onCreated(function(){
+  this.subscribe("qualifications");
+});
+
+Template.popupGradeEntry.helpers({
+  qualificationName: function(){
+    console.log("Passing: " + currentQual.get);
+    return currentQual.get();
+  }
+});
