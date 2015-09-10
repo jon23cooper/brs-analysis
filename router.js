@@ -1,6 +1,7 @@
 Students = new Mongo.Collection('students');
 Results = new Mongo.Collection('results');
-
+Qualifications = new Mongo.Collection("qualifications");
+ 
 Router.route('/', {
   template: 'students'
 });

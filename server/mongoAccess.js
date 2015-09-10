@@ -8,6 +8,10 @@ if (Meteor.isServer){
     return Results.find({});
   });
 
+  Meteor.publish("qualifications", function(){
+    return Qualifications.find({});
+  });
+
 };
 
 Meteor.methods({
@@ -33,5 +37,12 @@ Meteor.methods({
     });
     return result;
   },
-  
+
+  addQualification: function(qual){
+    var result = Qualifications.insert({
+      name: qual.name,
+    });
+    return name;
+  }
+
 });

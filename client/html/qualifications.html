@@ -6,6 +6,45 @@
     </div>
     <input type="submit" name="Add" class="form-control" />
   </form>
+  <<table class="table">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Details</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each qualifications}}
+        {{> qualification}}
+      {{/each}}
+    </tbody>
+  </table>
+</template>
+
+<<template name="qualification">
+  <tr>
+    <td>{{name}}</td>
+    <td>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Grade</th>
+            <th>Points</th>
+            <th>Order</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each grade}}
+            {{> gradeDetails}}
+          {{/each}}
+        </tbody>
+      </table>
+    </td>
+  </tr>
+</template>
+
+<template name="qualDetails">
+  <<h3> <small>{{name}}</small></h3>
   <form class ="form-inline">
     <div class="form-group">
       <label for="grade">Grade</label>
@@ -20,7 +59,27 @@
       <input type="number" class="form-control" id="order" placeholder="Enter the ranking for the grade, where 1 is the highest grade" />
     </div>
     <input type="submit" name="addGrade" class="form-control" />
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Grade</th>
+          <th>Points</th>
+          <th>Order</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each grade}}
+          {{> gradeDetails}}
+        {{/each}}
+      </tbody>
+    </table>
   </form>
+</template>
 
-
+<<template name="gradeDetails">
+  <tr>
+    <td>{{grade}}</td>
+    <td>{{points}}</td>
+    <td>{{order}}</td>
+  </tr>
 </template>
