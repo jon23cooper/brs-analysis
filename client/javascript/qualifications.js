@@ -79,9 +79,19 @@ Template.qualification.events({
 
 Template.order.events({
   "dblclick td": function(event){
-    //event.target.setAttribute("hidden", true);
-    event.target.children[0].setAttribute("hidden", false);
-  //  event.target.textContent="";
+    var input = event.currentTarget.children[0];
+    var text = event.currentTarget.children[1];
+    console.log(input);
+    console.log(text);
+    input.removeAttribute("hidden");
+    text.setAttribute("hidden", true);
+    console.log(input);
+    console.log(text);
+    // delay seems to be needed otherwise focus prevents input being shown
+    setTimeout (function(){
+      input.focus();
+      input.select();
+    }, 50)
 
   },
 
@@ -94,6 +104,8 @@ Template.order.events({
       this.grade,
       event.target.value
     );
+    event.target.setAttribute("hidden",true);
+    event.target.parentNode.children[1].removeAttribute("hidden");
   }
 });
 

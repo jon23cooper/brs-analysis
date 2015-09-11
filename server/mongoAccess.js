@@ -51,7 +51,13 @@ Meteor.methods({
     console.log("inserting: " + grade);
     var result = Qualifications.update(
       {_id: qualificationName},
-    {$push: {grades: grade}});
+      {$push: {
+        grades: {
+          $each: [grade],
+          $sort: {order: 1}
+        }
+      }}
+    );
     return result;
   },
 

@@ -71,13 +71,16 @@
 </template>
 
 <template name="point">
-  <td>{{points}}</td>
+  <td>
+    <input type="number" min=0 value={{points}} />
+    <span>{{points}}</span>
+  </td>
 </template>
 
 <template name="order">
   <td>
-    {{order}}
-    <input type="number" min=1 value={{order}} hidden=true />
+    <input type="number" min=1 value={{order}} hidden />
+    <div>{{order}}</div>
   </td>
 </template>
 
