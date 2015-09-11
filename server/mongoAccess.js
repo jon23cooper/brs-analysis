@@ -11,7 +11,7 @@ if (Meteor.isServer){
   Meteor.publish("qualifications", function(){
     return Qualifications.find({});
   });
-  
+
 };
 
 Meteor.methods({
@@ -53,6 +53,15 @@ Meteor.methods({
       {_id: qualificationName},
     {$push: {grades: grade}});
     return result;
-  }
+  },
+
+  updateQualificationGradeOrder: function(qualificationName, grade, newOrder){
+    console.log
+    console.log(Qualifications.find({_id:qualificationName, "grades.grade": grade}).fetch());
+    var result=Qualifications.update(
+      {_id: qualificationName, "grades.grade": grade},
+      {$set:{"grades.$.order": newOrder}}
+    );
+  },
 
 });

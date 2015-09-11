@@ -7,46 +7,26 @@
     </div>
     <input type="submit" name="addQual" class="form-control" />
   </form>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class= panel-title>{{currentQualification}}</h3>
-    </div>
-    <div class="panel-body">
-      <form name="addGrades" id="qualGrade" class="form-inline">
-        <div class="form-group">
-          <label for="grade">Grade</label>
-          <input type="text" name="grade" required />
-        </div>
-        <div class="form-group">
-          <label for="points">Points</label>
-          <input type="number" min=0 name="points" required />
-        </div>
-        <div class="form-group">
-          <label for="order">Order</label>
-          <input type="number" min=1 name="order" required />
-        </div>
-        <input type="submit" name="addGrade" value="Add" class="form-control" />
 
-      </form>
-    </div>
-  </div>
 
   Current Qualification: {{currentQualification}}
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <td>Name</td>
-          <td>Details</td>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each qualifications}}
-          {{> qualification}}
-        {{/each}}
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Details</td>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each qualifications}}
+            {{> qualification}}
+          {{/each}}
+        </tbody>
+      </table>
     </div>
+  </div>
 </template>
 
 <template name="qualification">
@@ -95,7 +75,10 @@
 </template>
 
 <template name="order">
-  <td>{{order}}</td>
+  <td>
+    {{order}}
+    <input type="number" min=1 value={{order}} hidden=true />
+  </td>
 </template>
 
 <template name="qualDetails">
@@ -145,7 +128,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Add grade to {{_id}}</h4>
+        <h4 class="modal-title">Add grade to {{qualificationName}}</h4>
       </div>
       <div class="modal-body">
         <form id="qualGrade">

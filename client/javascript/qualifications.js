@@ -68,9 +68,33 @@ Template.qualification.helpers({
       return q1.order > q2.order ;
     });
       return sorted;
+  },
+});
 
+Template.qualification.events({
+  "click table": function(event){
+    currentQual.set(this._id);
+  }
+})
+
+Template.order.events({
+  "dblclick td": function(event){
+    //event.target.setAttribute("hidden", true);
+    event.target.children[0].setAttribute("hidden", false);
+  //  event.target.textContent="";
 
   },
+
+  "blur input": function(event){
+    console.log(this.grade);
+    console.log(event.target.value);
+    Meteor.call(
+      "updateQualificationGradeOrder",
+      currentQual.get(),
+      this.grade,
+      event.target.value
+    );
+  }
 });
 
 Template.popupGradeEntry.onCreated(function(){
@@ -79,7 +103,6 @@ Template.popupGradeEntry.onCreated(function(){
 
 Template.popupGradeEntry.helpers({
   qualificationName: function(){
-    console.log("Passing: " + currentQual.get);
     return currentQual.get();
   }
 });
