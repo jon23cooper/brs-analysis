@@ -1,0 +1,47 @@
+<template name="subjects">
+  {{> subjectEntry}}
+  {{> subjectList}}
+</template>
+
+<template name="subjectEntry">
+  <form name="addSubject" class="form-inline">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="name"/>
+    </div>
+    <div class="form-group">
+      <label for="special">Special</label>
+      <select name="special">
+        <option value=""></option>
+        <option value="English">English</option>
+        <option value="English Lang">English Language</option>
+        <option value="English Lit">English</option>
+        <option value="Humanity">Humanity</option>
+        <option value="Language">Language</option>
+        <option value="Maths">Maths</option>
+        <option value="Science">Maths</option>
+        <option value="SingleScience">Single Science</option>
+      </select>
+    </div>
+    <input type="submit" name="Add"/>
+  </form>
+</template>
+
+<template name="subjectList">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Subjects</th>
+        <th>EBACC</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each subjects}}
+        <tr>
+          <td>{{_id}}</td>
+          <td>{{special}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
