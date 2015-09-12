@@ -65,6 +65,14 @@ Meteor.methods({
     return result;
   },
 
+  addSubject: function(name, special){
+    var result = Subjects.insert({
+      _id: name,
+      special: special
+    });
+    return result;
+  },
+
   update_order: function(qualificationName, grade, newValue){
     var result=Qualifications.update(
       {_id: qualificationName, "grades.grade": grade},
