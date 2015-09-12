@@ -61,13 +61,16 @@ Meteor.methods({
     return result;
   },
 
-  updateQualificationGradeOrder: function(qualificationName, grade, newOrder){
-    console.log
-    console.log(Qualifications.find({_id:qualificationName, "grades.grade": grade}).fetch());
+  update_order: function(qualificationName, grade, newValue){
     var result=Qualifications.update(
       {_id: qualificationName, "grades.grade": grade},
-      {$set:{"grades.$.order": newOrder}}
+      {$set:{"grades.$.order": newValue}}
     );
   },
+
+  update_points: function(qualificationName, grade, newValue){
+    var result=Qualifications.update({"_id":qualificationName, "grades.grade": grade},
+    {$set:{"grades.$.points": newValue}});
+  }
 
 });
