@@ -1,13 +1,15 @@
-Students = new Mongo.Collection('students');
-Results = new Mongo.Collection('results');
+
 Qualifications = new Mongo.Collection("qualifications");
- 
+Results = new Mongo.Collection('results');
+Students = new Mongo.Collection('students');
+Subjects = new Mongo.Collection("subjects");
+
 Router.route('/', {
   template: 'students'
 });
 
 Router.route("/results", {
-  template: 'results'
+  template: 'results',
 });
 
 Router.route("/qualifications", {

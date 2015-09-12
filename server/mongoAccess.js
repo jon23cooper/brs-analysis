@@ -12,6 +12,10 @@ if (Meteor.isServer){
     return Qualifications.find({});
   });
 
+  Meteor.publish("subjects", function(){
+    return Subjects.find({});
+  });
+
 };
 
 Meteor.methods({
