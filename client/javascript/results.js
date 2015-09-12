@@ -22,9 +22,13 @@ Template.results.helpers({
       var quals = Qualifications.findOne({_id: chosenQual.get()});
       return quals.grades.sort(function(a,b){
           return a.order > b.order;
-        });
-      }
-    },
+      });
+    }
+  },
+  subjects: function(){
+    return Subjects.find({}).fetch().sort()
+  },
+
 });
 
 Template.results.events({

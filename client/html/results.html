@@ -12,6 +12,11 @@
         </div>
         <div class="form-group">
           <label for="subject">Subject</label>
+          <select name="subjectSelect">
+            {{#each subjects}}
+              <option value={{_id}}>{{_id}}</option>
+            {{/each}}
+          </select>
           <input type="text" class="form-control" id="" placeholder="">
           <p class="help-block">Should be a select</p>
         </div>
