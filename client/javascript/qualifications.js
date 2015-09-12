@@ -77,38 +77,6 @@ Template.qualification.events({
   }
 })
 
-Template.order.events({
-  "dblclick td": function(event){
-    var input = event.currentTarget.children[0];
-    var text = event.currentTarget.children[1];
-    console.log(input);
-    console.log(text);
-    input.removeAttribute("hidden");
-    text.setAttribute("hidden", true);
-    console.log(input);
-    console.log(text);
-    // delay seems to be needed otherwise focus prevents input being shown
-    setTimeout (function(){
-      input.focus();
-      input.select();
-    }, 50)
-
-  },
-
-  "blur input": function(event){
-    console.log(this.grade);
-    console.log(event.target.value);
-    Meteor.call(
-      "updateQualificationGradeOrder",
-      currentQual.get(),
-      this.grade,
-      event.target.value
-    );
-    event.target.setAttribute("hidden",true);
-    event.target.parentNode.children[1].removeAttribute("hidden");
-  }
-});
-
 Template.popupGradeEntry.onCreated(function(){
   this.subscribe("qualifications");
 });
