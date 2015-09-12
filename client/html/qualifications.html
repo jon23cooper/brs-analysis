@@ -50,7 +50,7 @@
           <tr>
             <td>Points</td>
             {{#each sortedGrades}}
-              {{> point}}
+              {{> numberCellInputComponent id=points for="points"}}
             {{/each}}
           </tr>
           <tr>
@@ -71,17 +71,11 @@
 </template>
 
 <template name="point">
-  <td>
-    <input type="number" min=0 value={{points}} />
-    <span>{{points}}</span>
-  </td>
+  {{> numberCellInputComponent id=points for="points"}}
 </template>
 
 <template name="order">
-  <td>
-    <input type="number" min=1 value={{order}} hidden />
-    <div>{{order}}</div>
-  </td>
+  {{> numberCellInputComponent id=order for="order"}}
 </template>
 
 <template name="qualDetails">
