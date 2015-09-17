@@ -26,15 +26,18 @@ Template.students.events({
   },
 
   "submit form": function(event){
+    console.log("submitted");
     event.preventDefault();
+    var myForm= event.target;
     var student={
-      id: $("#exam_number")[0].value,
-      firstname: $("#firstname")[0].value,
-      lastname: $("#lastname")[0].value,
-      yearGroup: $( "#yearGroup" ).val(),
-      disadvantaged: $("#disadvantaged").attr('data-value') == 'true',
-      sen: $("#sen").attr('data-value') == 'true',
+      id: myForm.admission_number.value,
+      firstname: myForm.firstname.value,
+      lastname: myForm.lastname.value,
+      yearGroup: myForm.yearGroup.value,
+      disadvantaged: myForm.disadvantaged.attribute('data-value') == 'true',
+      sen: myForm.sen.attr('data-value') == 'true',
     };
+    console.log(student);
     Meteor.call('addStudent', student, function(err, result){
       if (err){
         console.log(err);

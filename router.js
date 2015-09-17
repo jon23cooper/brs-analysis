@@ -5,7 +5,8 @@ Students = new Mongo.Collection('students');
 Subjects = new Mongo.Collection("subjects");
 
 Router.route('/', {
-  template: 'students'
+  template: 'index', 
+  name: 'index'
 });
 
 Router.route("/qualifications", {

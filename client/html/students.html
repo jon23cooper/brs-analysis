@@ -4,6 +4,7 @@
 </head>
 
 <template name="students">
+  {{> mainMenu}}
   <div class="row">
     <div class="col-lg-1 col-md-1 col-sm-1"></div>
     <div class="col-lg-10 col-md-10 col-sm-10">
@@ -16,9 +17,9 @@
             <div class="row">
               <div class="col-lg-2 col-md-2 col-sm-2">
                 <div class="form-group">
-                  <label for="exam_number">Exam Number</label>
-                  <input type="text" class="form-control" id="exam_number"
-                    name="exam_number" placeholder="e.g. 00342" required>
+                  <label for="admission_number">Exam Number</label>
+                  <input type="text" class="form-control" id="admission_number"
+                    name="admission_number" placeholder="e.g. 00342" required>
                 </div>
               </div>
               <div class="col-lg-2 col-md-2 col-sm-2">
@@ -51,11 +52,8 @@
               </div>
               <div class="col-lg-2 col-md-2 col-sm-2">
                 <div class="form-group">
-                  <label for="disadvantaged">Disadvantaged</label>
-                  <button type="button" class="btn btn-primary" id="disadvantaged"
-                    data-toggle="button" data-value=false aria-pressed="false" autocomplete="off">
-                    False
-                  </button>
+                  <label name="disadvantaged" id=disadvantaged>Disadvantaged</label>
+                    {{> checkBoxComponent id=disadvantaged for="disadvantaged"}}
                 </div>
               </div>
               <div class="col-lg-1 col-md-1 col-sm-1">
