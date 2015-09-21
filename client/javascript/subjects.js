@@ -1,5 +1,6 @@
 Template.subjectList.onCreated(function(){
   this.subscribe("subjects");
+  this.subscribe("qualifications");
 });
 
 Template.subjectList.helpers({
@@ -9,7 +10,15 @@ Template.subjectList.helpers({
       '_id'
     );
   },
+
+
 });
+
+Template.subjectEntry.helpers({
+  qualifications: function(){
+    return Qualifications.find({});
+  },
+})
 
 Template.subjectEntry.events({
   "submit form": function(event){

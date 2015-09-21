@@ -1,4 +1,5 @@
 <template name="subjects">
+  {{> mainMenu}}
   {{> subjectEntry}}
   {{> subjectList}}
 </template>
@@ -23,6 +24,15 @@
         <option value="SingleScience">Single Science</option>
       </select>
     </div>
+    <div class="form-group">
+      <label for="qualType">Qualification</label>
+      <select name="qualType">
+        <option value=""></option>
+          {{#each qualifications}}
+            <option value={{_id}}>{{_id}}</option>
+          {{/each}}
+        </select>
+      </div>
     <input type="submit" name="Add"/>
   </form>
 </template>
@@ -33,6 +43,7 @@
       <tr>
         <th>Subjects</th>
         <th>EBACC</th>
+        <th>Qualification</th>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +51,7 @@
         <tr>
           <td>{{_id}}</td>
           <td>{{special}}</td>
+          <td>{{qualification}} {{> selectCellInputComponent data='qualifications'}}</td>
         </tr>
       {{/each}}
     </tbody>
